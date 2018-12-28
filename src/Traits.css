@@ -1,0 +1,16 @@
+.traits {
+    display: flex;
+    flex-direction: column;
+}
+
+.traits li{
+    /* margin-left: 50px; */
+    /* padding-right: 30px; */
+    margin-bottom: 50px;
+    width: 100px;
+    background-color: red;
+    text-align: center;
+    font-size: 18px;
+    list-style: none;
+    
+}
