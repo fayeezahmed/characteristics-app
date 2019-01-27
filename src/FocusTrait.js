@@ -34,4 +34,4 @@ class FocusTrait extends Component {
   }
 };
  
-export default TodoItems;
+export default FocusTrait;

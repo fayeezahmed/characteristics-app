@@ -1,13 +1,14 @@
 .days {
     display: flex;
-    justify-content: center;
 }
 
-.days .day{
-    margin-right: 1px;
-    padding: 10px;
+.day {
+    display: flex;
+    flex: 1;
     background-color: red;
-    text-align: center;
-    font-size: 18px;
     list-style: none;
+    margin: .1em;
+    padding: .3em;
+    border-radius: 3px;
+    margin: 1px;
 }
