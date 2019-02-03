@@ -26,28 +26,16 @@ class Traits extends Component {
   
     this.state = combinedTraitsAndDays;
   }
-    componentDidMount(){
-        console.log('DID MOUNT')
-    } 
-    componentWillMount(){
-        console.log('MOUNTING')
-    }
-  componentDidUpdate(){
-    console.log("DID UPDATE")
-  }
+   increaseCount(trait, day){
+    let allTraits = this.state;
+    allTraits[trait][day] += 1
 
-    componentWillUpdate(){
-        console.log('WILL UPDATE')
-    }
-
-  increaseCount(trait, day){
-    this.setState(this.state, () => {
-        this.state[trait][day] += 1
-      })
+    this.setState(
+        allTraits[trait]
+    )
   }
 
   createTraits(trait) {
-    // console.log(this)
     // TODO: Needs to be dynamically generated
     // TODO: Need to save state
     return <Fragment>
@@ -82,6 +70,7 @@ class Traits extends Component {
  
   render() {
     // const allTraits = this.props.allTraits;
+    console.log('rendering!')
     const listTraits = this.allTraits.map(this.createTraits);
     return (
       <div key="ALLTRAITS">
