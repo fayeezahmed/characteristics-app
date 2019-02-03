@@ -5,30 +5,11 @@ import Days from "./Days";
 import Traits from "./Traits";
 
 var destination = document.querySelector("#container");
-var traits = {
-    'Patience': {
-        key:'Patience', 
-        trait:'Patience'
-    }, 
-    'Cheerfulness': {
-        key:'Cheerfulness', 
-        trait:'Cheerfulness'
-    }
-};
-
-var test = 
-{   'Patience' : {
-        key:'Patience', 
-    }, 
-    'Cheerfulness' : {
-        key:'Cheerfulness', 
-    }
-}
-var test = ['Patience', 'Cheerfulness']
+var traits = ['Patience', 'Cheerfulness']
 ReactDOM.render(
     <div>
         <Days propDays = {['', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']}/>
-        <Traits allTraits = {test}/>
+        <Traits allTraits = {traits}/>
     </div>,
     destination
 );
