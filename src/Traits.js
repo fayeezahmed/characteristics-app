@@ -12,7 +12,6 @@ class Traits extends Component {
     this.createTraits = this.createTraits.bind(this);
 
     this.allTraits = this.props.allTraits;
-    
 
     let combinedTraitsAndDays = _.zipObject(this.allTraits, _.map(this.allTraits, () => {
       return {
@@ -27,18 +26,24 @@ class Traits extends Component {
   
     this.state = combinedTraitsAndDays;
   }
-
+    componentDidMount(){
+        console.log('DID MOUNT')
+    } 
+    componentWillMount(){
+        console.log('MOUNTING')
+    }
   componentDidUpdate(){
-    console.log(this.state);
+    console.log("DID UPDATE")
   }
 
-  increaseCount(trait, day){
-    // console.log(trait, day)
-    let traits = this.state;
+    componentWillUpdate(){
+        console.log('WILL UPDATE')
+    }
 
-   traits[trait][day] += 1
-    this.setState = {traits};
-    // console.log(this.state[trait]);
+  increaseCount(trait, day){
+    this.setState(this.state, () => {
+        this.state[trait][day] += 1
+      })
   }
 
   createTraits(trait) {
@@ -46,29 +51,29 @@ class Traits extends Component {
     // TODO: Needs to be dynamically generated
     // TODO: Need to save state
     return <Fragment>
-      <ul key= {trait.key + "_Group"}className="traits">
-        <li key={trait.key} className="trait">
+      <ul key= {trait + "_Group"}className="traits">
+        <li key={trait + 'trait'} className="trait">
             {trait}
         </li>
-        <li key={trait.key + "Mon"} onClick={() => this.increaseCount(trait, "Mon")}>
+        <li key={trait + "Mon"} onClick={() => this.increaseCount(trait, "Mon")}>
           {this.state[trait]["Mon"]}
         </li>
-        <li key={trait.key + "Tues"} onClick={() => this.increaseCount(trait, "Tues")}>
+        <li key={trait + "Tues"} onClick={() => this.increaseCount(trait, "Tues")}>
         {this.state[trait]["Tues"]}
         </li>
-        <li key={trait.key + "Wed"} onClick={() => this.increaseCount(trait, "Wed")}>
+        <li key={trait + "Wed"} onClick={() => this.increaseCount(trait, "Wed")}>
         {this.state[trait]["Wed"]}
         </li>
-        <li key={trait.key + "Thurs"}onClick={() => this.increaseCount(trait, "Thurs")}>
+        <li key={trait+ "Thurs"}onClick={() => this.increaseCount(trait, "Thurs")}>
         {this.state[trait]["Thurs"]}
         </li>
-        <li key={trait.key + "Fri"} onClick={() => this.increaseCount(trait, "Fri")}>
+        <li key={trait + "Fri"} onClick={() => this.increaseCount(trait, "Fri")}>
         {this.state[trait]["Fri"]}
         </li>
-        <li key={trait.key + "Sat"} onClick={() => this.increaseCount(trait, "Sat")}>
+        <li key={trait + "Sat"} onClick={() => this.increaseCount(trait, "Sat")}>
         {this.state[trait]["Sat"]}
         </li>
-        <li key={trait.key + "Sun"} onClick={() => this.increaseCount(trait, "Sun")}>
+        <li key={trait + "Sun"} onClick={() => this.increaseCount(trait, "Sun")}>
         {this.state[trait]["Sun"]}
         </li>
       </ul> 
