@@ -6,8 +6,30 @@ import Traits from "./Traits";
 import shortid from 'shortid';
 
 var destination = document.querySelector("#container");
-var days = ['', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-var traits = ['Patience', 'Cheerfulness']
+var days = [
+            '',
+            'Monday',
+            'Tuesday',
+            'Wednesday',
+            'Thursday',
+            'Friday',
+            'Saturday',
+            'Sunday'
+];
+
+var traits = [
+            'Patience',
+            'Cheerfulness',
+            'Forgiveness',
+            'Truth',
+            'Sincere',
+            'Cleanliness',
+            'Honesty',
+            'Humility',
+            'Moderation',
+            'Courage',
+            'Salah'
+];
 ReactDOM.render(
     <div key={shortid.generate()}>
         <Days propDays = {days}/>
