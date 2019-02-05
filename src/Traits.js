@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import './Traits.css';
 
+import shortid from 'shortid';
 var _ = require('lodash');
  
 // https://www.quackit.com/html/html_editors/scratchpad/?example=/css/flexbox/examples/flexbox_12_column_grid_2
@@ -34,46 +35,33 @@ class Traits extends Component {
         allTraits[trait]
     )
   }
-
+    
   createTraits(trait) {
-    // TODO: Needs to be dynamically generated
     // TODO: Need to save state
-    return <Fragment>
-      <ul key= {trait + "_Group"}className="traits">
-        <li key={trait + 'trait'} className="trait">
+    const days = ['Mon', 'Tues', 'Wed', 'Thurs',
+                  'Fri', 'Sat', 'Sun']
+    return <Fragment key={shortid.generate()}>
+      <ul key={shortid.generate()}className="traits">
+        <li key={shortid.generate()} className="trait">
             {trait}
         </li>
-        <li key={trait + "Mon"} onClick={() => this.increaseCount(trait, "Mon")}>
-          {this.state[trait]["Mon"]}
-        </li>
-        <li key={trait + "Tues"} onClick={() => this.increaseCount(trait, "Tues")}>
-        {this.state[trait]["Tues"]}
-        </li>
-        <li key={trait + "Wed"} onClick={() => this.increaseCount(trait, "Wed")}>
-        {this.state[trait]["Wed"]}
-        </li>
-        <li key={trait+ "Thurs"}onClick={() => this.increaseCount(trait, "Thurs")}>
-        {this.state[trait]["Thurs"]}
-        </li>
-        <li key={trait + "Fri"} onClick={() => this.increaseCount(trait, "Fri")}>
-        {this.state[trait]["Fri"]}
-        </li>
-        <li key={trait + "Sat"} onClick={() => this.increaseCount(trait, "Sat")}>
-        {this.state[trait]["Sat"]}
-        </li>
-        <li key={trait + "Sun"} onClick={() => this.increaseCount(trait, "Sun")}>
-        {this.state[trait]["Sun"]}
-        </li>
+      
+        {days.map((day) => 
+            <li
+                key={shortid.generate()} 
+                onClick={() => this.increaseCount(trait, day)}
+            >
+            {this.state[trait][day]}
+            </li>
+        )}
       </ul> 
     </Fragment>       
   }
  
   render() {
-    // const allTraits = this.props.allTraits;
-    console.log('rendering!')
     const listTraits = this.allTraits.map(this.createTraits);
     return (
-      <div key="ALLTRAITS">
+      <div key={shortid.generate()}>
         {listTraits}
       </div>
     )
@@ -81,4 +69,5 @@ class Traits extends Component {
 };
  
  
+
 export default Traits;
