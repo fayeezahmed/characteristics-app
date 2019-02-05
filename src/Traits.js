@@ -41,8 +41,8 @@ class Traits extends Component {
     const days = ['Mon', 'Tues', 'Wed', 'Thurs',
                   'Fri', 'Sat', 'Sun']
     return <Fragment key={shortid.generate()}>
-      <ul key={shortid.generate()}className="traits">
-        <li key={shortid.generate()} className="trait">
+      <ul key={shortid.generate()} className="traits">
+        <li key={shortid.generate()} className="trait" data-test-id={trait}>
             {trait}
         </li>
       
