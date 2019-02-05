@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<ul
+  className="days"
+>
+  <li
+    className="day"
+  >
+    
+  </li>
+  <li
+    className="day"
+  >
+    M
+  </li>
+  <li
+    className="day"
+  >
+    T
+  </li>
+  <li
+    className="day"
+  >
+    W
+  </li>
+  <li
+    className="day"
+  >
+    Th
+  </li>
+  <li
+    className="day"
+  >
+    F
+  </li>
+  <li
+    className="day"
+  >
+    S
+  </li>
+  <li
+    className="day"
+  >
+    Sn
+  </li>
+</ul>
+`;
