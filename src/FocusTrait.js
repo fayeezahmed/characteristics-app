@@ -1,37 +1,45 @@
 import React, { Component, Fragment } from "react";
- 
+import { RIEInput  } from 'riek';
+import _ from 'lodash';
+import './FocusTrait.css';
+
 class FocusTrait extends Component {
   constructor(props) {
-    super(props);
- 
-    this.createTasks = this.createTasks.bind(this);
-    this.delete = this.delete.bind(this);
-  }
+        super(props);
+        this.state = {
+            titleText : 'Put trait here',
+            quoteText : 'Put quote here'
+        }
+        this.changeState = this.changeState.bind(this);
+    }
 
-  delete(key) {
-    this.props.delete(key);
-  }
- 
-  createTasks(item) {
-    
-    return <Fragment>
-                <div className="delete" onClick={() => this.delete(item.key)}>x</div>
-                <li key={item.key}>{item.text}</li>
-            </Fragment>
-  }
- 
-  render() {
-    const Focus
+    changeState(newState) {
+        console.log(newState)
+        this.setState(newState)
+    }
 
-    var todoEntries = this.props.entries;
-    var listItems = todoEntries.map(this.createTasks);
- 
-    return (
-      <ul className="theList">
-        {listItems}
-      </ul>
-    );
-  }
+    render() {
+        return (
+
+        <Fragment> 
+            <div className='headerContainer'>
+                <RIEInput
+                  className='title'
+                  value={this.state.titleText}
+                  change={this.changeState}
+                  propName='titleText'
+                  validate={_.isString} />
+
+                <RIEInput
+                  className='quote'
+                  value={this.state.quoteText}
+                  change={this.changeState}
+                  propName='quoteText'
+                  validate={_.isString} />
+            </div>
+        </Fragment>
+        );
+    }
 };
  
 export default FocusTrait;

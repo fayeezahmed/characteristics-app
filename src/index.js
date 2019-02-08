@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import Days from "./Days";
 import Traits from "./Traits";
+import FocusTrait from './FocusTrait';
 import shortid from 'shortid';
 
 var destination = document.querySelector("#container");
@@ -32,6 +33,7 @@ var traits = [
 ];
 ReactDOM.render(
     <div key={shortid.generate()}>
+        <FocusTrait />
         <Days propDays = {days}/>
         <Traits allTraits = {traits}/>
     </div>,

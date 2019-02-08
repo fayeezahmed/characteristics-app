@@ -1,5 +1,7 @@
 .traits {
     display: flex;
+    align-items: center;
+    height: 100%;
 }
 
 .traits li{
@@ -11,4 +13,6 @@
     border-radius: 3px;
     margin: 1px;
     flex: column;
+    height: 60px;
+    min-width: 100px;
 }

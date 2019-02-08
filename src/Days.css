@@ -11,4 +11,5 @@
     padding: .3em;
     border-radius: 3px;
     margin: 1px;
+    min-width: 100px;
 }
