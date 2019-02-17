@@ -1,4 +1,5 @@
 // https://medium.com/codingthesmartway-com-blog/the-mern-stack-tutorial-building-a-react-crud-application-from-start-to-finish-part-2-637f337e5d61
+// TODO: To find out how to update individual db elements
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
