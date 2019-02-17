@@ -15,8 +15,9 @@
     "riek": "^1.1.0",
     "shortid": "1.0.0"
   },
-  "devDependencies":{
-    "identity-obj-proxy": "^3.0.0"
+  "devDependencies": {
+    "identity-obj-proxy": "^3.0.0",
+    "mongodb": "^3.1.13"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -36,11 +37,11 @@
   "jest": {
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css|less)$": "identity-obj-proxy" 
+      "\\.(css|less)$": "identity-obj-proxy"
     }
   },
   "setupFiles": [
-      "<rootDir>/config/polyfills.js",
-      "<rootDir>/src/setupTests.js"
-    ]
+    "<rootDir>/config/polyfills.js",
+    "<rootDir>/src/setupTests.js"
+  ]
 }
