@@ -1,31 +1,28 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 let characteristics = new Schema({
-    characteristics_type: {
+    traitName: {
         type: String
     },
-    characteristics_mon: {
+    mon: {
         type: Number
     },
-    characteristics_mon: {
+    tue: {
         type: Number
     },
-    characteristics_tue: {
+    wed: {
         type: Number
     },
-    characteristics_wed: {
+    thu: {
         type: Number
     },
-    characteristics_thu: {
+    fri: {
         type: Number
     },
-    characteristics_fri: {
+    sat: {
         type: Number
     },
-    characteristics_sat: {
-        type: Number
-    },
-    characteristics_sun: {
+    sun: {
         type: Number
     }
 });

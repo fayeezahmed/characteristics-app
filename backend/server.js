@@ -59,7 +59,7 @@ characteristicsRoutes.route('/updateOne').patch((req, res) => {
     let id = req.params.id;
     console.log(req.body)
     characteristics.updateOne(
-            {"characteristics_type": req.body.characteristics_type},
+            {"traitName": req.body.traitName},
             {$set: updateTrait}
         )
         .then(characteristics => {
