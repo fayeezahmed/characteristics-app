@@ -52,10 +52,9 @@ class Traits extends Component {
     }
 
       listTraitName(traitName, days) { 
-        console.log('fhaifhlshfla')
       return <Fragment> 
         <ul key={shortid.generate()} className="traits">
-              <li key={shortid.generate()}  data-test-id={traitName}>
+              <li key={shortid.generate()}  data-test-id={traitName} className="traitName">
                   {traitName}
               </li>
           {Object.keys(days).map(day => { 
