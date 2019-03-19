@@ -13,6 +13,7 @@ class Traits extends Component {
 
     this.listTraitName = this.listTraitName.bind(this);
     this.allTraits = this.props.allTraits;
+    this.patchState = this.patchState.bind(this);
 
     this.state = [];
     console.log(JSON.stringify(this.state));
@@ -24,21 +25,28 @@ class Traits extends Component {
             if( currentState[key]['traitName'] == trait){
                 currentState[key]['days'][day] += 1
                 this.setState(currentState)
+                console.log(currentState[key])
+                this.patchState(JSON.stringify(currentState[key]))
             }
-            console.log(currentState[key])
+        })
+    }
+
+    patchState(state) {
+        return fetch('http://localhost:5000/characteristics/updateOne', {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: state
         })
     }
 
     componentDidMount() {
-        console.log('COMPONENT MOUNTING')
         fetch('http://localhost:5000/characteristics')
             .then(res => res.json())
             .then(
                 (result) => {
-                    console.log("RESULT")
                     this.setState(result)
-                    console.log(this.state)
-                    console.log('after result')
             })
     }
 
