@@ -18,17 +18,15 @@ class Traits extends Component {
     console.log(JSON.stringify(this.state));
   }
    increaseCount(trait, day){
-       let allTraits = this.state;
-       let numOfTraits = Object.keys(allTraits).length
-       for (var i=0; i < numOfTraits; i++){
-           if(allTraits[i]['traitName'] == trait){
-               allTraits[i][day] += 1
-           }
-       }
-
-        this.setState(
-            allTraits[trait]
-        )
+       let currentState = this.state;
+       Object.keys(currentState)
+        .filter((key) =>  {
+            if( currentState[key]['traitName'] == trait){
+                currentState[key]['days'][day] += 1
+                this.setState(currentState)
+            }
+            console.log(currentState[key])
+        })
     }
 
     componentDidMount() {
@@ -44,9 +42,9 @@ class Traits extends Component {
             })
     }
 
-    listDayForTraits(day) {
-        return <li className="trait">
-                {day}
+    listDayForTraits(trait, dayValue, dayKey) {
+        return <li className="trait" onClick={() => this.increaseCount(trait, dayKey)}>
+                {dayValue}
               </li>
 
     }
@@ -58,14 +56,14 @@ class Traits extends Component {
                   {traitName}
               </li>
           {Object.keys(days).map(day => { 
-                return this.listDayForTraits(days[day]);
+                return this.listDayForTraits(traitName, days[day], day);
           })}
         </ul>
        </Fragment> }
     
     createTraits() {
-    let currentState = this.state
-      return <Fragment key={shortid.generate()}>
+        let currentState = this.state
+        return <Fragment key={shortid.generate()}>
           { Object.keys(currentState).map(index => {
               const traitName = currentState[index]["traitName"];
               const days = currentState[index]["days"]
