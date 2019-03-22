@@ -39,7 +39,6 @@ characteristicsRoutes.route('/').get(
 
 characteristicsRoutes.route('/increase').post((req, res) => {
     let characteristicsAll = new characteristics(req.body);
-    console.log(req.body);
     characteristicsAll.save()
         .then(characteristicsAll => {
             res.status(200).json({'characteristics': 'characteristics added successfully'});
