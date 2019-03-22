@@ -3,6 +3,10 @@
     align-items: center;
     height: 100%;
 }
+.traitName {
+  background-color: blue !important;
+  color: white;
+}
 
 .traits li{
     flex: 1;

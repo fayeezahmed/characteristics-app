@@ -2,8 +2,7 @@ import React, { Component, Fragment } from "react";
 import './Traits.css';
 
 import shortid from 'shortid';
-var _ = require('lodash');
- 
+
 // https://www.quackit.com/html/html_editors/scratchpad/?example=/css/flexbox/examples/flexbox_12_column_grid_2
 // https://www.quackit.com/css/flexbox/examples/
 class Traits extends Component {
@@ -12,54 +11,76 @@ class Traits extends Component {
     this.increaseCount = this.increaseCount.bind(this);
     this.createTraits = this.createTraits.bind(this);
 
-    this.allTraits = this.props.allTraits;
+    this.listTraitName = this.listTraitName.bind(this);
+    this.patchState = this.patchState.bind(this);
 
-    let combinedTraitsAndDays = _.zipObject(this.allTraits, _.map(this.allTraits, () => {
-      return {
-        Mon : 0, 
-        Tues : 0,
-        Wed : 0,
-        Thurs : 0,
-        Fri : 0,
-        Sat : 0,
-        Sun : 0}
-    } ))
-  
-    this.state = combinedTraitsAndDays;
+    this.state = [];
   }
+
    increaseCount(trait, day){
-    let allTraits = this.state;
-    allTraits[trait][day] += 1
+       let currentState = this.state;
+       Object.keys(currentState)
+        .filter((key) =>  {
+            if( currentState[key]['traitName'] == trait){
+                currentState[key]['days'][day] += 1
+                this.setState(currentState)
+                console.log(currentState[key])
+                this.patchState(JSON.stringify(currentState[key]))
+            }
+        })
+    }
 
-    this.setState(
-        allTraits[trait]
-    )
-  }
-    
-  createTraits(trait) {
-    // TODO: Need to save state
-    const days = ['Mon', 'Tues', 'Wed', 'Thurs',
-                  'Fri', 'Sat', 'Sun']
-    return <Fragment key={shortid.generate()}>
-      <ul key={shortid.generate()} className="traits">
-        <li key={shortid.generate()} className="trait" data-test-id={trait}>
-            {trait}
-        </li>
-      
-        {days.map((day) => 
-            <li
-                key={shortid.generate()} 
-                onClick={() => this.increaseCount(trait, day)}
-            >
-            {this.state[trait][day]}
+    patchState(state) {
+        return fetch('http://localhost:5000/characteristics/updateOne', {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: state
+        })
+    }
+
+    componentDidMount() {
+        fetch('http://localhost:5000/characteristics')
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState(result)
+            })
+    }
+
+    listDayForTraits(trait, dayValue, dayKey) {
+        return <li className="trait" onClick={() => this.increaseCount(trait, dayKey)}>
+                {dayValue}
+              </li>
+    }
+
+    listTraitName(traitName, days) { 
+        return <Fragment> 
+        <ul key={shortid.generate()} className="traits">
+            <li key={shortid.generate()}  data-test-id={traitName} className="traitName">
+              {traitName}
             </li>
-        )}
-      </ul> 
-    </Fragment>       
-  }
+            {Object.keys(days).map(day => { 
+                return this.listDayForTraits(traitName, days[day], day);
+            })}
+        </ul>
+    </Fragment> }
+    
+    createTraits() {
+        let currentState = this.state
+        return <Fragment key={shortid.generate()}>
+            { Object.keys(currentState).map(index => {
+                    const traitName = currentState[index]["traitName"];
+                    const days = currentState[index]["days"]
+                    return this.listTraitName(traitName, days)
+                })
+            }      
+        </Fragment>
+    }
  
   render() {
-    const listTraits = this.allTraits.map(this.createTraits);
+    const listTraits = this.createTraits();
     return (
       <div key={shortid.generate()}>
         {listTraits}
@@ -68,6 +89,4 @@ class Traits extends Component {
   }
 };
  
- 
-
 export default Traits;
