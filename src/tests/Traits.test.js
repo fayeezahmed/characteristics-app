@@ -12,10 +12,3 @@ it('renders correctly', () => {
     expect(tree).toMatchSnapshot();
 });
 
-test('Trait count increases after click', () => {
-    const traits = shallow(<Traits allTraits={['Patience', 'Cheerfulness', 'Other']} />);
-    const firstElementPatience = 'li[data-test-id="Patience"]+li';
-    expect(traits.find(firstElementPatience).text()).toEqual('0');
-    traits.find(firstElementPatience).simulate('click');
-    expect(traits.find(firstElementPatience).text()).toEqual('1');
-});

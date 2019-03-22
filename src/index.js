@@ -18,24 +18,11 @@ var days = [
             'Sunday'
 ];
 
-var traits = [
-            'Patience',
-            'Cheerfulness',
-            'Forgiveness',
-            'Truth',
-            'Sincere',
-            'Cleanliness',
-            'Honesty',
-            'Humility',
-            'Moderation',
-            'Courage',
-            'Salah'
-];
 ReactDOM.render(
     <div key={shortid.generate()}>
         <FocusTrait />
         <Days propDays = {days}/>
-        <Traits allTraits = {traits}/>
+        <Traits />
     </div>,
     destination
 );

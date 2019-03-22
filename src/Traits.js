@@ -3,11 +3,9 @@ import './Traits.css';
 
 import shortid from 'shortid';
 
-// https://www.quackit.com/html/html_editors/scratchpad/?example=/css/flexbox/examples/flexbox_12_column_grid_2
-// https://www.quackit.com/css/flexbox/examples/
 class Traits extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.increaseCount = this.increaseCount.bind(this);
     this.createTraits = this.createTraits.bind(this);
 
