@@ -12,12 +12,11 @@ class Traits extends Component {
     this.createTraits = this.createTraits.bind(this);
 
     this.listTraitName = this.listTraitName.bind(this);
-    this.allTraits = this.props.allTraits;
     this.patchState = this.patchState.bind(this);
 
     this.state = [];
-    console.log(JSON.stringify(this.state));
   }
+
    increaseCount(trait, day){
        let currentState = this.state;
        Object.keys(currentState)
@@ -54,32 +53,31 @@ class Traits extends Component {
         return <li className="trait" onClick={() => this.increaseCount(trait, dayKey)}>
                 {dayValue}
               </li>
-
     }
 
-      listTraitName(traitName, days) { 
-      return <Fragment> 
+    listTraitName(traitName, days) { 
+        return <Fragment> 
         <ul key={shortid.generate()} className="traits">
-              <li key={shortid.generate()}  data-test-id={traitName} className="traitName">
-                  {traitName}
-              </li>
-          {Object.keys(days).map(day => { 
+            <li key={shortid.generate()}  data-test-id={traitName} className="traitName">
+              {traitName}
+            </li>
+            {Object.keys(days).map(day => { 
                 return this.listDayForTraits(traitName, days[day], day);
-          })}
+            })}
         </ul>
-       </Fragment> }
+    </Fragment> }
     
     createTraits() {
         let currentState = this.state
         return <Fragment key={shortid.generate()}>
-          { Object.keys(currentState).map(index => {
-              const traitName = currentState[index]["traitName"];
-              const days = currentState[index]["days"]
-              return this.listTraitName(traitName, days)
-          })
-      }      
-    </Fragment>
-  }
+            { Object.keys(currentState).map(index => {
+                    const traitName = currentState[index]["traitName"];
+                    const days = currentState[index]["days"]
+                    return this.listTraitName(traitName, days)
+                })
+            }      
+        </Fragment>
+    }
  
   render() {
     const listTraits = this.createTraits();
@@ -91,6 +89,4 @@ class Traits extends Component {
   }
 };
  
- 
-
 export default Traits;
